@@ -12,17 +12,14 @@ const App = () => {
   const [title, setTitle] = useState("");
   const [error, seterror] = useState("");
 
-  
-
   const displayMovies = async (title) => {
-
     if (!title.trim()) {
       alert("Please Enter a movie title");
       return;
     }
 
     setLoading(true);
-    setDisplay([])
+    setDisplay([]);
 
     try {
       const url = `http://www.omdbapi.com/?apikey=${ApiKey}&s=${title}`;
@@ -36,16 +33,11 @@ const App = () => {
         seterror("Movies Can't Be Found");
         setDisplay([]);
       }
-
     } catch (error) {
-
       seterror("Unable to Fetch");
       console.log(error);
-      
     } finally {
-
       setLoading(false);
-
     }
   };
 
@@ -53,17 +45,18 @@ const App = () => {
     displayMovies("hulk");
   }, []);
 
-
   return (
     <div>
-      <Heading />
+      <div className="px-10 py-5 flex justify-between items-center  bg-white/10">
+        <Heading />
 
-      <SearchBar
-        title={title}
-        setTitle={setTitle}
-        Loading={Loading}
-        displayMovies={displayMovies}
-      />
+        <SearchBar
+          title={title}
+          setTitle={setTitle}
+          Loading={Loading}
+          displayMovies={displayMovies}
+        />
+      </div>
 
       <Movies display={display} Loading={Loading} error={error} />
     </div>
