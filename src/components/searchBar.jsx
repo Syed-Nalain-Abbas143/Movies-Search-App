@@ -2,14 +2,15 @@ import React from "react";
 
 const searchBar = ({ title, setTitle, Loading, displayMovies }) => {
   return (
-    <div className="relative w-full max-w-sm">
+    <div className="relative w-full lg:max-w-sm max-w-30">
   <input
     type="text"
     placeholder="Search for a movie..."
     value={title}
     className="
       w-full
-      px-5 py-3 pr-12
+      px-5 lg:py-3 pr-12
+      py-1
       rounded-2xl
       bg-gray-900/70
       text-white
